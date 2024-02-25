@@ -21,6 +21,7 @@ public class FoodController {
         this.loadAllFood = loadAllFood;
     }
 
+    @CrossOrigin(value = "*")
     @PostMapping
     public ResponseEntity<GenericResponse<FoodResponseDTO>> save(@RequestBody FoodRequestDTO foodRequest) {
         FoodResponseDTO foodResponse = saveFood.save(foodRequest);
@@ -33,6 +34,7 @@ public class FoodController {
         );
     }
 
+    @CrossOrigin(value = "*")
     @GetMapping
     public ResponseEntity<GenericResponse<Set<FoodResponseDTO>>> loadAll() {
         Set<FoodResponseDTO> allFoodResponse = loadAllFood.loadAll();
