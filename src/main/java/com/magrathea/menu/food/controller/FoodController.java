@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/food")
+@RequestMapping("food")
 public class FoodController {
     private final SaveFood saveFood;
     private final LoadAllFood loadAllFood;
@@ -21,7 +21,7 @@ public class FoodController {
         this.loadAllFood = loadAllFood;
     }
 
-    @CrossOrigin(value = "*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public ResponseEntity<GenericResponse<FoodResponseDTO>> save(@RequestBody FoodRequestDTO foodRequest) {
         FoodResponseDTO foodResponse = saveFood.save(foodRequest);
@@ -34,7 +34,7 @@ public class FoodController {
         );
     }
 
-    @CrossOrigin(value = "*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public ResponseEntity<GenericResponse<Set<FoodResponseDTO>>> loadAll() {
         Set<FoodResponseDTO> allFoodResponse = loadAllFood.loadAll();
