@@ -23,27 +23,29 @@ public class FoodController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
-    public ResponseEntity<GenericResponse<FoodResponseDTO>> save(@RequestBody FoodRequestDTO foodRequest) {
+    public ResponseEntity<FoodResponseDTO> save(@RequestBody FoodRequestDTO foodRequest) {
         FoodResponseDTO foodResponse = saveFood.save(foodRequest);
-        return ResponseEntity.ok(
+        return ResponseEntity.ok(foodResponse);
+        /*return ResponseEntity.ok(
                 GenericResponse.<FoodResponseDTO>builder()
                         .success(Boolean.TRUE)
                         .message("Food creation success!")
                         .data(foodResponse)
                         .build()
-        );
+        );*/
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
-    public ResponseEntity<GenericResponse<Set<FoodResponseDTO>>> loadAll() {
+    public ResponseEntity<Set<FoodResponseDTO>> loadAll() {
         Set<FoodResponseDTO> allFoodResponse = loadAllFood.loadAll();
-        return ResponseEntity.ok(
+        return ResponseEntity.ok(allFoodResponse);
+        /*return ResponseEntity.ok(
                 GenericResponse.<Set<FoodResponseDTO>>builder()
                         .success(Boolean.TRUE)
                         .message("Load all food success!")
                         .data(allFoodResponse)
                         .build()
-        );
+        );*/
     }
 }
